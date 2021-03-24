@@ -1,20 +1,20 @@
-package com.comet.moviesapp.ui.movies
+package com.comet.moviesapp.ui.movie_detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.comet.moviesapp.data.model.Movie
+import com.comet.moviesapp.data.repository.MovieDetailRepository
 import com.comet.moviesapp.data.repository.MovieListRepository
 import com.comet.moviesapp.utils.Constant
 import com.comet.moviesapp.utils.Resource
 
-class MovieListViewModel
-@ViewModelInject constructor(private val repository: MovieListRepository) : ViewModel() {
+class MovieDetailViewModel
+@ViewModelInject constructor(private val repository: MovieDetailRepository) : ViewModel() {
 
-    val result = repository.getMoviesList(
+    fun getMovieDetail(movieId: String): LiveData<Resource<Movie>> = repository.getMovieDetail(
         apiKey = Constant.API_KEY,
         language = Constant.LANGUAGE,
-        page = 1
+        movie_id = movieId
     )
-
 }

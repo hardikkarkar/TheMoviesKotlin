@@ -16,6 +16,7 @@
 
 package com.comet.moviesapp.data.remote
 
+import com.comet.moviesapp.data.model.Movie
 import com.comet.moviesapp.data.model.PopularMoviesResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,6 +25,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -37,6 +39,13 @@ interface APIService {
         @Query("language") language: String,
         @Query("page") page: Number,
     ): Response<PopularMoviesResponse>
+
+    @GET("movie/{movie_id}")
+    suspend fun getMoviesDetail(
+        @Path("movie_id") movie_id: String,
+        @Query("api_key") apikey: String,
+        @Query("language") language: String
+    ): Response<Movie>
 
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"

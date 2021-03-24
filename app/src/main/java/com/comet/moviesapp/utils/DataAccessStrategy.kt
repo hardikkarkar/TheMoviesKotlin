@@ -3,8 +3,7 @@ package com.comet.moviesapp.utils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.example.rickandmorty.utils.Resource
-import com.example.rickandmorty.utils.Resource.Status.*
+import com.comet.moviesapp.utils.Resource.Status.*
 import kotlinx.coroutines.Dispatchers
 
 fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
@@ -18,7 +17,6 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == SUCCESS) {
             saveCallResult(responseStatus.data!!)
-
         } else if (responseStatus.status == ERROR) {
             emit(Resource.error(responseStatus.message!!))
             emitSource(source)

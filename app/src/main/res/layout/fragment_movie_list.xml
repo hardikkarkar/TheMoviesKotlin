@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/plant_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -15,7 +15,7 @@
             android:padding="12dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context="com.google.samples.apps.sunflower.GardenActivity"
-            tools:listitem="@layout/movies_list_item"/>
+            tools:listitem="@layout/movies_list_item" />
 
     </FrameLayout>
 </layout>

@@ -5,7 +5,8 @@ import com.comet.moviesapp.data.local.AppDatabase
 import com.comet.moviesapp.data.local.MovieDao
 import com.comet.moviesapp.data.remote.APIService
 import com.comet.moviesapp.data.repository.MovieListRepository
-import com.example.rickandmorty.data.remote.MoviesRemoteDataSource
+import com.comet.moviesapp.data.remote.MoviesRemoteDataSource
+import com.comet.moviesapp.data.repository.MovieDetailRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,4 +35,10 @@ object AppModule {
     fun provideRepository(remoteDataSource: MoviesRemoteDataSource,
                           localDataSource: MovieDao) =
         MovieListRepository(remoteDataSource, localDataSource)
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailRepository(remoteDataSource: MoviesRemoteDataSource,
+                          localDataSource: MovieDao) =
+        MovieDetailRepository(remoteDataSource, localDataSource)
 }

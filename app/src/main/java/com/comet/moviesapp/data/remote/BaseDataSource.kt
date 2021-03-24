@@ -1,6 +1,6 @@
-package com.example.rickandmorty.data.remote
+package com.comet.moviesapp.data.remote
 
-import com.example.rickandmorty.utils.Resource
+import com.comet.moviesapp.utils.Resource
 import retrofit2.Response
 import timber.log.Timber
 

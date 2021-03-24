@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.comet.moviesapp.R
 import com.comet.moviesapp.databinding.FragmentMovieListBinding
-import com.example.rickandmorty.utils.Resource
+import com.comet.moviesapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,7 +62,20 @@ class MoviesListFragment : Fragment(), MoviesAdapter.MoviesItemListener {
         })
     }
 
-    override fun onItemClick(characterId: Long?) {
-        TODO("Not yet implemented")
+    override fun onItemClick(characterId: Long?, imageView: View) {
+
+        val bundle = bundleOf("movieId" to characterId.toString())
+        Navigation.findNavController(requireActivity(),R.id.nav_host)
+            .navigate(R.id.action_main_fragment_to_movieDetailFragment, bundle)
+//        viewModel.getMovieDetail(characterId.toString()).observe(viewLifecycleOwner, Observer {
+//            when (it.status) {
+//                Resource.Status.SUCCESS -> {
+//                    print(it.data)
+//                    print(it.data?.genres)
+//                }
+//                Resource.Status.ERROR -> {
+//                }
+//            }
+//        })
     }
 }

@@ -13,7 +13,7 @@ import com.comet.moviesapp.utils.Constant
 class MoviesAdapter(private val listener: MoviesItemListener) : RecyclerView.Adapter<MoviesViewHolder>() {
 
     interface MoviesItemListener {
-        fun onItemClick(characterId: Long?)
+        fun onItemClick(characterId: Long?, imageView: View)
     }
 
     private val items = ArrayList<Movie>()
@@ -55,8 +55,8 @@ class MoviesViewHolder(private val itemBinding: MoviesListItemBinding, private v
             .into(itemBinding.imageView)
     }
 
-    override fun onClick(v: View?) {
-        listener.onItemClick(movie.id)
+    override fun onClick(v: View) {
+        listener.onItemClick(movie.id,v)
     }
 }
 
